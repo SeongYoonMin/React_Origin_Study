@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Form from "./components/Form";
+import List from "./components/List";
 
-function App() {
+const Container = styled.div`
+  margin: auto;
+  max-width: 600px;
+`;
+const TodoBlock = styled.div`
+  padding: 30px;
+  margin-top: 50px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: -9px 17px 13px rgb(0 0 0 / 16%);
+`;
+
+const Title = styled.h1`
+  font-size: 30px;
+  font-weight: 700;
+`;
+
+export default function App() {
+  const [todoData, setTodoData] = useState([]);
+  const [value, setValue] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <TodoBlock>
+        <div>
+          <Title>할일 목록</Title>
+        </div>
+
+        <List todoData={todoData} setTodoData={setTodoData} />
+        <Form value={value} setValue={setValue} setTodoData={setTodoData} />
+      </TodoBlock>
+
+      
+    </Container>
   );
 }
-
-export default App;
