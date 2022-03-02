@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import Form from "./components/Form";
 import List from "./components/List";
@@ -23,6 +23,11 @@ const Title = styled.h1`
 export default function App() {
   const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
+  
+  const handleClick = useCallback((id) => {
+    let newTodoData = todoData.filter((data) => data.id !== id);
+    setTodoData(newTodoData);
+  }, [todoData]);
 
   return (
     <Container>
@@ -32,7 +37,7 @@ export default function App() {
         </div>
 
         <List todoData={todoData} setTodoData={setTodoData} />
-        <Form value={value} setValue={setValue} setTodoData={setTodoData} />
+        <Form value={value} setValue={setValue} setTodoData={setTodoData} handleClick={handleClick} />
       </TodoBlock>
 
       
