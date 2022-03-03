@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/SeongYoonMin/React_todo_App/static/css/main.88888160.css",
+    "main.js": "/SeongYoonMin/React_todo_App/static/js/main.38822f27.js",
+    "static/js/787.6f30267f.chunk.js": "/SeongYoonMin/React_todo_App/static/js/787.6f30267f.chunk.js",
+    "index.html": "/SeongYoonMin/React_todo_App/index.html",
+    "main.88888160.css.map": "/SeongYoonMin/React_todo_App/static/css/main.88888160.css.map",
+    "main.38822f27.js.map": "/SeongYoonMin/React_todo_App/static/js/main.38822f27.js.map",
+    "787.6f30267f.chunk.js.map": "/SeongYoonMin/React_todo_App/static/js/787.6f30267f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.88888160.css",
+    "static/js/main.38822f27.js"
+  ]
+}
