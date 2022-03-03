@@ -18,30 +18,59 @@ const TodoBlock = styled.div`
 const Title = styled.h1`
   font-size: 30px;
   font-weight: 700;
+  display: flex;
+  justify-content: space-between;
 `;
+
+const AllDeleteButton = styled.button`
+  width: 100px;
+  height: 30px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 2px;
+  transition: all .2s;
+  cursor: pointer;
+  &:hover{
+    background-color: #ECECEC;
+    transform: scale(1.2);
+  }
+`
 
 export default function App() {
   const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
 
-  const handleClick = useCallback((id) => {
-    let newTodoData = todoData.filter((data) => data.id !== id);
-    setTodoData(newTodoData);
-    localStorage.setItem("todoData", JSON.stringify(newTodoData));
-  }, [todoData]);
+  const handleClick = useCallback(
+    (id) => {
+      let newTodoData = todoData.filter((data) => data.id !== id);
+      setTodoData(newTodoData);
+      localStorage.setItem("todoData", JSON.stringify(newTodoData));
+    },
+    [todoData]
+  );
+
+  const handleAllDelete = () => {
+    localStorage.setItem("todoData", []);
+    setTodoData([]);
+  }
 
   return (
     <Container>
       <TodoBlock>
         <div>
-          <Title>할일 목록</Title>
+          <Title>
+            할일 목록
+            <AllDeleteButton onClick={handleAllDelete}>모두 지우기</AllDeleteButton>
+          </Title>
         </div>
 
-        <List todoData={todoData} setTodoData={setTodoData} />
-        <Form value={value} setValue={setValue} setTodoData={setTodoData} handleClick={handleClick} />
+        <List
+          todoData={todoData}
+          setTodoData={setTodoData}
+          handleClick={handleClick}
+        />
+        <Form todoData={todoData} value={value} setValue={setValue} setTodoData={setTodoData} />
       </TodoBlock>
-
-      
     </Container>
   );
 }
