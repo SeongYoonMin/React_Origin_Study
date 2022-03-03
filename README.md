@@ -1,3 +1,7 @@
-# React_Origin_Study
+# React ToDoApp
 
-PROJECT LION의 The Origin: React 강의를 들으며 공부한 내용을 올리는 REPO입니다.
+React를 이용한 TodoApp 입니다.
+
+App 안에 각각 부분별로 Form, List, Lists 로 나누었습니다.
+
+좀 더 좋은 경험을 드리고자 react-beautiful-dnd의 DragDrop방식을 이용하였습니다.

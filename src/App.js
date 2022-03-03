@@ -23,10 +23,11 @@ const Title = styled.h1`
 export default function App() {
   const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
-  
+
   const handleClick = useCallback((id) => {
     let newTodoData = todoData.filter((data) => data.id !== id);
     setTodoData(newTodoData);
+    localStorage.setItem("todoData", JSON.stringify(newTodoData));
   }, [todoData]);
 
   return (
