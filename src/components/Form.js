@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const TodoForm = styled.form`
   display: flex;
@@ -20,47 +20,49 @@ const TodoFormBtn = styled.input`
   background-color: white;
   border: 1px solid black;
   border-radius: 2px;
-  transition: all .3s;
-  &:hover{
+  transition: all 0.3s;
+  &:hover {
     background-color: black;
     color: white;
     border: 1px solid white;
   }
 `;
 
-export default function Form({value, setValue, setTodoData}) {
-    const handleChange = (event) => {
-        setValue(event.target.value);
-      };
-    
-      const handleSubmit = (event) => {
-        event.preventDefault();
-    
-        let newTodo = {
-          id: Date.now(),
-          title: value,
-          completed: false,
-        };
-    
-        setTodoData((prev) => [...prev, newTodo]);
-        setValue("");
-      };
+export default function Form({ value, setValue, handleChange, setTodoData }) {
+  
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (value === "") {
+      alert("할 일을 입력해주세요!!");
+      return;
+    }
+    let newTodo = {
+      id: Date.now(),
+      title: value,
+      completed: false,
+    };
+
+    setTodoData((prev) => [...prev, newTodo]);
+    setValue("");
+  };
 
   return (
     <TodoForm onSubmit={handleSubmit}>
-          <TodoFormInput
-            type="text"
-            name="value"
-            placeholder="해야 할 일을 입력하시오."
-            value={value}
-            onChange={handleChange}
-          />
-          <TodoFormBtn
-            type="submit"
-            value="입력"
-            className="btn"
-            style={{ flex: "1" }}
-          />
-        </TodoForm>
-  )
+      <TodoFormInput
+        type="text"
+        name="value"
+        placeholder="해야 할 일을 입력하시오."
+        value={value}
+        onChange={handleChange}
+      />
+      
+      <TodoFormBtn
+        type="submit"
+        value="입력"
+        className="btn"
+        style={{ flex: "1" }}
+      />
+    </TodoForm>
+  );
 }
